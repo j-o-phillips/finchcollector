@@ -4,6 +4,19 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
-    path('finches/', views.finch_index, name='finch_index'),
-    path('finches/<int:finch_id>', views.finch_details, name='details')
+    path('finches/', views.FinchList.as_view(), name='finch_index'),
+    path('finches/<int:finch_id>', views.finch_details, name='detail'),
+    path('finches/create', views.FinchCreate.as_view(), name='finch_create'),
+    path('finches/<int:pk>/update', views.FinchUpdate.as_view(), name='finch_update'),
+    path('finches/<int:pk>/delete', views.FinchDelete.as_view(), name='finch_delete'),
+    path('finches/<int:finch_id>/add_feeding/', views.add_feeding, name='add_feeding'),
+    path('finches/<int:finch_id>/assoc_hat/<int:hat_id>', views.assoc_hat, name='assoc_hat'),
+    path('finches/<int:finch_id>/unassoc_hat/<int:hat_id>/', views.unassoc_hat, name='unassoc_hat'),
+    path('hats/create/', views.HatCreate.as_view(), name='hats_create'),
+    path('hats/', views.HatList.as_view(), name='hats_index'),
+    path('hats/<int:pk>/', views.HatDetail.as_view(), name='hats_detail'),
+    path('hats/<int:pk>/update/', views.HatUpdate.as_view(), name='hats_update'),
+    path('hats/<int:pk>/delete/', views.HatDelete.as_view(), name='hats_delete'),
+   
+  
 ]
